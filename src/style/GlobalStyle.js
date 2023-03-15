@@ -17,7 +17,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
 	input {
-        width: 303px;
+        width: calc(100vw - 70px);
         height: 45px;
         background: #FFFFFF;
         border: 1px solid #D5D5D5;

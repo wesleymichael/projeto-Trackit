@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import AddRoutine from './AddRoutine'
 
 export default function RoutineMain() {
   return (
@@ -8,6 +9,7 @@ export default function RoutineMain() {
             <h1>Meus hábitos</h1>
             <button>+</button>
         </div>
+        <AddRoutine />
         <div>
             <p>
                 Você não tem nenhum hábito cadastrado ainda. 
@@ -26,7 +28,7 @@ const Div = styled.div`
     height: calc(100vh - 70px);
     background: #F2F2F2;
     padding: 0px 17px;
-    div{
+    div:first-child{
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -36,13 +38,13 @@ const Div = styled.div`
             height: 35px;
             font-size: 27px;
         }
-        h1{
-            font-size: 22px;
-            color: #126BA5;
-        }
-        p{
-            font-size: 19px;
-            color: #666666;
-        }
+    }
+    h1{
+        font-size: 22px;
+        color: #126BA5;
+    }
+    p{
+        font-size: 19px;
+        color: #666666;
     }
 `
