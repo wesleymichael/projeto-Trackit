@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../../assets/logo.png'
 
@@ -9,7 +10,7 @@ export default function LoginPage() {
 
     return (
         <DadosUsuario>
-            <img src={logo} alt="logo-trackIt"/>
+            <Link to="/"><img src={logo} alt="logo-trackIt"/></Link>
             <form>
                 <input 
                     type="email" 
@@ -27,7 +28,7 @@ export default function LoginPage() {
 
                 <button>Entrar</button>
             </form>
-            <a>Não tem uma conta? Cadastre-se!</a>
+            <Link to="/cadastro">Não tem uma conta? Cadastre-se!</Link>
         </DadosUsuario>
     )
 }
@@ -38,7 +39,6 @@ const DadosUsuario = styled.div`
     align-items: center;
     margin: 70px 36px;
     font-family: 'Lexend Deca';
-
     img{
         width: 180px;
         height: 180px;

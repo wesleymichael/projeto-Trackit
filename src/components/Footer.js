@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 
-
 // Import react-circular-progressbar module and styles
 import {
     CircularProgressbar,
@@ -9,18 +8,20 @@ import {
     buildStyles
 } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
+import { Link } from 'react-router-dom';
 
 export default function Footer() {
     const percentage = 66;
     return (
         <FooterStyled>
-            <div>Hábitos</div>
-            <ProgressBar percentage={percentage} />
-            <div>Histórico</div>
+            <Link to="/habitos">Hábitos</Link>
+            <Link to="/hoje">
+                <ProgressBar percentage={percentage} />
+            </Link>
+            <Link to="/historico">Histórico</Link>
         </FooterStyled>
     )
 }
-
 
 function ProgressBar({percentage}){
     return(
@@ -59,7 +60,9 @@ const FooterStyled = styled.footer`
     display: flex;
     align-items: center;
     justify-content: space-between;
-    color: #52B6FF; //Cor tema claro
+    a{
+        color: #52B6FF; //Cor tema claro
+    }
     font-family: 'Lexend Deca';
     font-weight: 400;
     font-size: 22px;

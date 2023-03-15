@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../../assets/logo.png'
 
 export default function RegisterPage() {
-
     return (
         <DadosUsuario>
-            <img src={logo} alt="logo-trackIt"/>
+            <Link to="/"><img src={logo} alt="logo-trackIt"/></Link>
             <form>
                 <input 
                     type="email" 
@@ -38,7 +38,7 @@ export default function RegisterPage() {
 
                 <button>Cadastrar</button>
             </form>
-            <a>Já tem uma conta? Faça login!</a>
+            <Link to="/">Já tem uma conta? Faça login!</Link>
         </DadosUsuario>
     )
 }
@@ -49,13 +49,11 @@ const DadosUsuario = styled.div`
     align-items: center;
     margin: 70px 36px;
     font-family: 'Lexend Deca';
-
     img{
         width: 180px;
         height: 180px;
         margin-bottom: 35px ;
     }
-
     form{
         display: flex;
         flex-direction: column;
