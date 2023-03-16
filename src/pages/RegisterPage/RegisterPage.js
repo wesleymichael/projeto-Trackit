@@ -2,7 +2,6 @@ import axios from 'axios'
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import styled from 'styled-components'
-
 import logo from '../../assets/logo.png'
 import Loading from '../../components/Loading'
 import { BASE_URL } from '../../constants/url'
@@ -43,6 +42,7 @@ export default function RegisterPage() {
                     onChange={handleForm} 
                     required
                     disabled={disableForm}
+                    data-test="email-input"
                 />
 
                 <input
@@ -54,6 +54,7 @@ export default function RegisterPage() {
                     onChange={handleForm} 
                     required
                     disabled={disableForm}
+                    data-test="password-input"
                 />
 
                 <input
@@ -65,6 +66,7 @@ export default function RegisterPage() {
                     onChange={handleForm} 
                     required
                     disabled={disableForm}
+                    data-test="user-name-input"
                 />
 
                 <input
@@ -76,13 +78,14 @@ export default function RegisterPage() {
                     onChange={handleForm} 
                     required
                     disabled={disableForm}
+                    data-test="user-image-input"
                 />
 
-                <button type='submit' disabled={disableForm}>
+                <button type='submit' disabled={disableForm} data-test="signup-btn">
                     {(disableForm) ? <Loading/> : "Cadastrar"}
                 </button>
             </form>
-            <Link to="/">Já tem uma conta? Faça login!</Link>
+            <Link to="/" data-test="login-link">Já tem uma conta? Faça login!</Link>
         </DadosUsuario>
     )
 }

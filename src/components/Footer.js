@@ -13,12 +13,12 @@ import { Link } from 'react-router-dom';
 export default function Footer() {
     const percentage = 66;
     return (
-        <FooterStyled>
-            <Link to="/habitos">Hábitos</Link>
-            <Link to="/hoje">
+        <FooterStyled data-test="menu">
+            <Link to="/habitos" data-test="habit-link">Hábitos</Link>
+            <Link to="/hoje" data-test="today-link">
                 <ProgressBar percentage={percentage} />
             </Link>
-            <Link to="/historico">Histórico</Link>
+            <Link to="/historico" data-test="history-link">Histórico</Link>
         </FooterStyled>
     )
 }

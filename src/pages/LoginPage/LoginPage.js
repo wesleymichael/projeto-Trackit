@@ -8,7 +8,6 @@ import {BASE_URL} from "../../constants/url";
 
 import { GlobalContext } from '../../context/GlobalContext';
 
-
 export default function LoginPage() {
     const [form, setForm] = useState({email:"", password:""});
     const [disableForm, setDisableForm] = useState(false);
@@ -48,6 +47,7 @@ export default function LoginPage() {
                     onChange={handleForm} 
                     required
                     disabled={disableForm}
+                    data-test="email-input"
                 />
                 <input
                     id="password"
@@ -58,12 +58,13 @@ export default function LoginPage() {
                     onChange={handleForm} 
                     required
                     disabled={disableForm}
+                    data-test="password-input"
                 />
-                <button type='submit' disabled={disableForm}>
+                <button type='submit' disabled={disableForm} data-test="login-btn">
                     {(disableForm) ? <Loading/> : "Entrar"}
                 </button>
             </form>
-            <Link to="/cadastro">Não tem uma conta? Cadastre-se!</Link>
+            <Link to="/cadastro" data-test="signup-link">Não tem uma conta? Cadastre-se!</Link>
         </DadosUsuario>
     )
 }

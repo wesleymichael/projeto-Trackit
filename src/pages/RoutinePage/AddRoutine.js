@@ -3,11 +3,12 @@ import styled from 'styled-components'
 import weekdays from '../../constants/weekdays'
 import {BASE_URL} from '../../constants/url'
 import Loading from '../../components/Loading';
+import {ButtonWeekday} from './Styled'
 
 import { GlobalContext } from '../../context/GlobalContext';
 import axios from 'axios';
 
-export default function AddRoutine({setShowAddRoutine, name, setName, days, setDays}) {
+export default function AddRoutine({setShowAddRoutine, name, setName, days, setDays, getData}) {
     const [disableForm, setDisableForm] = useState(false);
     const {user} = useContext(GlobalContext);
 
@@ -32,6 +33,7 @@ export default function AddRoutine({setShowAddRoutine, name, setName, days, setD
                 setName("");
                 setDays([]);
                 setShowAddRoutine(false);
+                getData();
             })
             .catch(err => {
                 alert(err.response.data.message);
@@ -40,13 +42,14 @@ export default function AddRoutine({setShowAddRoutine, name, setName, days, setD
     }
 
     return (
-        <Div>
+        <Div data-test="habit-create-container">
             <input
                 type="text"
                 placeholder="nome do habito"
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 disabled={disableForm}
+                data-test="habit-name-input"
             />
             <div>
                 {weekdays.map( w => (
@@ -55,35 +58,21 @@ export default function AddRoutine({setShowAddRoutine, name, setName, days, setD
                         onClick={() => toggleDays(w.id)} 
                         isSelected={days.some((id) => id === w.id)}
                         disabled={disableForm}
+                        data-test="habit-day"
                     >
                         {w.name}
                     </ButtonWeekday>
                 ))}
             </div>
             <div>
-                <a onClick={() => setShowAddRoutine(false)}>Cancelar</a>
-                <button type='submit' disabled={disableForm} onClick={createRoutine}>
+                <a onClick={() => setShowAddRoutine(false)} data-test="habit-create-cancel-btn">Cancelar</a>
+                <button type='submit' disabled={disableForm} onClick={createRoutine} data-test="habit-create-save-btn">
                     {(disableForm) ? <Loading/> : "Salvar"}
                 </button>
             </div>
         </Div>
     )
 }
-
-
-const ButtonWeekday = styled.button`
-    border-radius: 5px;
-    background: ${(props) => props.isSelected ? "#DBDBDB" : "#FFFFFF"};
-    border: 1px solid #D5D5D5;
-    color: ${(props) => props.isSelected ? "#FFFFFF" : "#DBDBDB" };
-    font-weight: 400;
-    &&&{
-        width: 30px;
-        height: 30px;
-        font-size: 20px;
-        margin-right: 4px;
-    }
-`
 
 const Div = styled.div`
     width: 100%;

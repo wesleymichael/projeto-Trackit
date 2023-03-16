@@ -6,14 +6,12 @@ export default function Header() {
     const {user, setUser} = useContext(GlobalContext);
 
     useEffect(() => {
-        if(user.lenght === undefined){
-            const user_Storage = JSON.parse(localStorage.getItem('user'));
-            setUser(user_Storage);
-        }
+        const user_Storage = JSON.parse(localStorage.getItem('user'));
+        setUser(user_Storage);
     },[]);
-
+ 
     return (
-        <HeaderStyled>
+        <HeaderStyled data-test="header">
             <div>TrackIt</div>
             <img src={user.image} alt="user-image"/>
         </HeaderStyled>
