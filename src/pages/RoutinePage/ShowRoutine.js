@@ -12,15 +12,17 @@ export default function ShowRoutine({ routine, getData }) {
     const [confirmDeleteVisible, setConfirmDeleteVisible] = useState(false)
 
     function deleteRoutine(id) {
-        const config = {
-            headers: { Authorization: `Bearer ${user.token}` }
+        if( window.confirm("Deletar hábito?") ){
+            const config = {
+                headers: { Authorization: `Bearer ${user.token}` }
+            }
+            axios.delete(`${BASE_URL}/habits/${id}`, config)
+                .then(res => {
+                    alert("Hábito deletado");
+                    setConfirmDeleteVisible(false);
+                    getData();
+                })
         }
-        axios.delete(`${BASE_URL}/habits/${id}`, config)
-            .then(res => {
-                alert("Hábito deletado");
-                setConfirmDeleteVisible(false);
-                getData();
-            })
     }
     
     return (
@@ -29,7 +31,7 @@ export default function ShowRoutine({ routine, getData }) {
                 <Div key={r.name} data-test="habit-container">
                     <h1 data-test="habit-name">{r.name}</h1>
                     <Weekdays weekdays={weekdays} days={r.days} />
-                    <Delete onClick={() => setConfirmDeleteVisible(true)} data-test="habit-delete-btn"><FaRegTrashAlt /></Delete>
+                    <Delete onClick={() => deleteRoutine(r.id)} data-test="habit-delete-btn"><FaRegTrashAlt /></Delete>
 
                     {(confirmDeleteVisible) &&
                         <ConfirmDeleteStyled>

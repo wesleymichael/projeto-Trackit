@@ -65,8 +65,8 @@ export default function AddRoutine({setShowAddRoutine, name, setName, days, setD
                 ))}
             </div>
             <div>
-                <a onClick={() => setShowAddRoutine(false)} data-test="habit-create-cancel-btn">Cancelar</a>
-                <button type='submit' disabled={disableForm} onClick={createRoutine} data-test="habit-create-save-btn">
+                <ButtonCancelar onClick={() => setShowAddRoutine(false)} disabled={disableForm} data-test="habit-create-cancel-btn">Cancelar</ButtonCancelar>
+                <button type='submit' onClick={createRoutine} disabled={disableForm} data-test="habit-create-save-btn">
                     {(disableForm) ? <Loading/> : "Salvar"}
                 </button>
             </div>
@@ -90,11 +90,6 @@ const Div = styled.div`
         right: 15px;
         display: flex;
         align-items: center;
-        a{
-            color: #52B6FF;
-            padding-right: 20px;
-            cursor: pointer;
-        }
         button{
             width: 84px;
             height: 35px;
@@ -107,4 +102,11 @@ const Div = styled.div`
             left: 10px;
         }
     }
+`
+
+const ButtonCancelar = styled.button`
+    color: #52B6FF;
+    margin-right: 20px;
+    cursor: pointer;
+    background: #FFFFFF;
 `
