@@ -1,11 +1,21 @@
 import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
+import { GlobalContext } from '../context/GlobalContext'
 
 export default function Header() {
+    const {user, setUser} = useContext(GlobalContext);
+
+    useEffect(() => {
+        if(user.lenght === undefined){
+            const user_Storage = JSON.parse(localStorage.getItem('user'));
+            setUser(user_Storage);
+        }
+    },[]);
+
     return (
         <HeaderStyled>
             <div>TrackIt</div>
-            <img src="https://www.greenpeace.org/static/planet4-brasil-stateless/2018/07/pinguim-de-barbicha2.jpg" alt="user-image"/>
+            <img src={user.image} alt="user-image"/>
         </HeaderStyled>
     )
 }
