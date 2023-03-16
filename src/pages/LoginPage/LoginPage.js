@@ -74,12 +74,16 @@ const DadosUsuario = styled.div`
     align-items: center;
     margin: 70px 36px;
     font-family: 'Lexend Deca';
+    button{
+        display: flex;
+		align-items: center;
+        justify-content: center;
+    }
     img{
         width: 180px;
         height: 180px;
         margin-bottom: 35px ;
     }
-
     form{
         display: flex;
         flex-direction: column;

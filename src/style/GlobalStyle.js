@@ -12,11 +12,10 @@ const GlobalStyle = createGlobalStyle`
         font-family: 'Lexend Deca';
         font-weight: 400;
         font-size: 20px;
-        text-align: center;
         color: #FFFFFF;
-        display: flex;
+        /* display: flex;
 		align-items: center;
-        justify-content: center;
+        justify-content: center; */
         cursor: pointer;
     }
 
@@ -51,5 +50,4 @@ const GlobalStyle = createGlobalStyle`
         }
 	}
 `
-
 export default GlobalStyle

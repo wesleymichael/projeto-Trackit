@@ -1,15 +1,26 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import AddRoutine from './AddRoutine'
 
 export default function RoutineMain() {
-  return (
+    const [showAddRoutine, setShowAddRoutine] = useState(false);
+    const [name, setName] = useState("");
+    const [days, setDays] = useState([]);
+    
+    return (
     <Div>
         <div>
             <h1>Meus hábitos</h1>
-            <button>+</button>
+            <button onClick={() => setShowAddRoutine(true)}>+</button>
         </div>
-        <AddRoutine />
+        {(showAddRoutine) ? 
+            <AddRoutine 
+                setShowAddRoutine={setShowAddRoutine}
+                name={name}
+                setName={setName}
+                days={days}
+                setDays={setDays}        
+            /> : ""}
         <div>
             <p>
                 Você não tem nenhum hábito cadastrado ainda. 
@@ -32,19 +43,23 @@ const Div = styled.div`
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding-top: 25px;
+        padding-top: 20px;
         button{
             width: 40px;
             height: 35px;
             font-size: 27px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-    }
-    h1{
-        font-size: 22px;
-        color: #126BA5;
+        h1{
+            font-size: 22px;
+            color: #126BA5;
+        }
     }
     p{
         font-size: 19px;
         color: #666666;
+        padding-top: 20px;
     }
 `
