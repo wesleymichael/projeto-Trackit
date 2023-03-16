@@ -28,7 +28,6 @@ function Task(){
     )
 }
 
-
 const TodayTask = styled.div`
     //position: relative;
     display: flex;

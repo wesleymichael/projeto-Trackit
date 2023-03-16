@@ -14,9 +14,16 @@ const GlobalStyle = createGlobalStyle`
         font-size: 20px;
         text-align: center;
         color: #FFFFFF;
+        display: flex;
+		align-items: center;
+        justify-content: center;
+        cursor: pointer;
     }
 
 	input {
+        font-family: 'Lexend Deca';
+        color: #666666;
+        font-weight: 400;
         width: calc(100vw - 70px);
         height: 45px;
         background: #FFFFFF;
@@ -27,15 +34,20 @@ const GlobalStyle = createGlobalStyle`
 		font-size: 18px;
 		display: flex;
 		align-items: center;
-        color: #666666;
 		&::placeholder{
-			font-family: 'Lexend Deca';
-            font-weight: 400;
             font-size: 20px;
             color: #DBDBDB;
 		}
         &:focus{
             outline: 0;
+        }
+        &:disabled{
+            background: #F2F2F2;
+            color: #AFAFAF;
+            font-size: 20px;
+        }
+        &:-webkit-autofill{
+            -webkit-text-fill-color: #666666;
         }
 	}
 `

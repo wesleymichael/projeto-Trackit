@@ -1,32 +1,67 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import React, { useContext, useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../../assets/logo.png'
+import Loading from '../../components/Loading';
+import {BASE_URL} from "../../constants/url";
+
+import { GlobalContext } from '../../context/GlobalContext';
 
 
 export default function LoginPage() {
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
+    const [form, setForm] = useState({email:"", password:""});
+    const [disableForm, setDisableForm] = useState(false);
+    const {setUser} = useContext(GlobalContext);
+    const navigate = useNavigate();
+
+    function handleForm(e){
+        setForm( {...form, [e.target.name]: e.target.value} )
+    }
+
+    function login(e){
+        e.preventDefault();
+        setDisableForm(true);
+
+        axios.post(`${BASE_URL}/auth/login`, {...form})
+            .then(res => {
+                setUser(res.data);
+                navigate("/hoje");
+                localStorage.setItem('user', JSON.stringify(res.data));
+            })
+            .catch(err => {
+                (err.response.status === 404) ? alert(err) : alert(err.response.data);
+                setDisableForm(false);
+            })
+    }
 
     return (
         <DadosUsuario>
             <Link to="/"><img src={logo} alt="logo-trackIt"/></Link>
-            <form>
-                <input 
-                    type="email" 
-                    placeholder="email" 
-                    value={email} 
-                    onChange={e => setEmail(e.target.value)} 
-                />
-
+            <form onSubmit={login}>
                 <input
-                    type="password"
-                    placeholder="senha"
-                    value={password}
-                    onChange={e => setPassword(e.target.value)}
+                    id="email"
+                    type="email" 
+                    placeholder="email"
+                    name="email" 
+                    value={form.email}
+                    onChange={handleForm} 
+                    required
+                    disabled={disableForm}
                 />
-
-                <button>Entrar</button>
+                <input
+                    id="password"
+                    type="password" 
+                    placeholder="senha"
+                    name="password" 
+                    value={form.password}
+                    onChange={handleForm} 
+                    required
+                    disabled={disableForm}
+                />
+                <button type='submit' disabled={disableForm}>
+                    {(disableForm) ? <Loading/> : "Entrar"}
+                </button>
             </form>
             <Link to="/cadastro">Não tem uma conta? Cadastre-se!</Link>
         </DadosUsuario>

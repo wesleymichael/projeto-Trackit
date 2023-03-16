@@ -1,13 +1,13 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 
 export default function Header() {
-  return (
-    <HeaderStyled>
-        <div>TrackIt</div>
-        <img src='http://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png' />
-    </HeaderStyled>
-  )
+    return (
+        <HeaderStyled>
+            <div>TrackIt</div>
+            <img src="https://www.greenpeace.org/static/planet4-brasil-stateless/2018/07/pinguim-de-barbicha2.jpg" alt="user-image"/>
+        </HeaderStyled>
+    )
 }
 
 const HeaderStyled = styled.header`

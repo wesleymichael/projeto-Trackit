@@ -1,42 +1,86 @@
+import axios from 'axios'
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { Link, useNavigate } from 'react-router-dom'
+import styled from 'styled-components'
+
 import logo from '../../assets/logo.png'
+import Loading from '../../components/Loading'
+import { BASE_URL } from '../../constants/url'
 
 export default function RegisterPage() {
+    const [form, setForm] = useState({email:"", password:"", name:"", image:""});
+    const [disableForm, setDisableForm] = useState(false);
+    const navigate = useNavigate()
+
+    function handleForm(e) {
+        setForm({ ...form, [e.target.name]: e.target.value })
+    }
+
+    function register(e){
+        e.preventDefault();
+        const body = {...form}
+        setDisableForm(true);
+        axios.post(`${BASE_URL}/auth/sign-up`, body)
+            .then(res => {
+                navigate("/");
+            })
+            .catch(err => {
+                alert(err.response.data.message)
+                setDisableForm(false);
+            })
+    }
+
     return (
         <DadosUsuario>
             <Link to="/"><img src={logo} alt="logo-trackIt"/></Link>
-            <form>
-                <input 
+            <form onSubmit={register}>
+                <input
+                    id="email"
                     type="email" 
-                    placeholder="email" 
-                    //value={email}
-                    //onChange={e => setEmail(e.target.value)} 
+                    placeholder="email"
+                    name="email" 
+                    value={form.email}
+                    onChange={handleForm} 
+                    required
+                    disabled={disableForm}
                 />
 
                 <input
-                    type="password"
+                    id="password"
+                    type="password" 
                     placeholder="senha"
-                    //value={password}
-                    //onChange={e => setPassword(e.target.value)}
+                    name="password" 
+                    value={form.password}
+                    onChange={handleForm} 
+                    required
+                    disabled={disableForm}
                 />
 
                 <input
-                    type="text"
+                    id="name"
+                    type="text" 
                     placeholder="nome"
-                    //value={name}
-                    //onChange={e => setName(e.target.value)}
+                    name="name" 
+                    value={form.name}
+                    onChange={handleForm} 
+                    required
+                    disabled={disableForm}
                 />
 
                 <input
-                    type="url"
+                    id="image"
+                    type="url" 
                     placeholder="foto"
-                    //value={password}
-                    //onChange={e => setPassword(e.target.value)}
+                    name="image" 
+                    value={form.url}
+                    onChange={handleForm} 
+                    required
+                    disabled={disableForm}
                 />
 
-                <button>Cadastrar</button>
+                <button type='submit' disabled={disableForm}>
+                    {(disableForm) ? <Loading/> : "Cadastrar"}
+                </button>
             </form>
             <Link to="/">Já tem uma conta? Faça login!</Link>
         </DadosUsuario>
