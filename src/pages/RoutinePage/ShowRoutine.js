@@ -31,7 +31,7 @@ export default function ShowRoutine({ routine, getData }) {
                 <Div key={r.name} data-test="habit-container">
                     <h1 data-test="habit-name">{r.name}</h1>
                     <Weekdays weekdays={weekdays} days={r.days} />
-                    <Delete onClick={() => deleteRoutine(r.id)} data-test="habit-delete-btn"><FaRegTrashAlt /></Delete>
+                    <Delete onClick={() => setConfirmDeleteVisible(true)} data-test="habit-delete-btn"><FaRegTrashAlt /></Delete>
 
                     {(confirmDeleteVisible) &&
                         <ConfirmDeleteStyled>
@@ -98,6 +98,10 @@ const ConfirmDeleteStyled = styled.div`
         font-size: 15px;
         padding-top: 10px;
         background: none;
+        &:focus{
+            outline: none;
+            box-shadow: none !important;
+        }
     }
 `
 const Delete = styled.span`

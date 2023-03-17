@@ -17,6 +17,7 @@ const GlobalStyle = createGlobalStyle`
 		align-items: center;
         justify-content: center; */
         cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
     }
 
 	input {
