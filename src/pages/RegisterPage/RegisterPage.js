@@ -5,6 +5,7 @@ import styled from 'styled-components'
 import logo from '../../assets/logo.png'
 import Loading from '../../components/Loading'
 import { BASE_URL } from '../../constants/url'
+import { DadosUsuario } from '../../style/StyledPages'
 
 export default function RegisterPage() {
     const [form, setForm] = useState({email:"", password:"", name:"", image:""});
@@ -20,11 +21,11 @@ export default function RegisterPage() {
         const body = {...form}
         setDisableForm(true);
         axios.post(`${BASE_URL}/auth/sign-up`, body)
-            .then(res => {
+            .then(() => {
                 navigate("/");
             })
             .catch(err => {
-                alert(err.response.data.message)
+                alert(err.response.data.message);
                 setDisableForm(false);
             })
     }
@@ -44,7 +45,6 @@ export default function RegisterPage() {
                     disabled={disableForm}
                     data-test="email-input"
                 />
-
                 <input
                     id="password"
                     type="password" 
@@ -56,7 +56,6 @@ export default function RegisterPage() {
                     disabled={disableForm}
                     data-test="password-input"
                 />
-
                 <input
                     id="name"
                     type="text" 
@@ -68,7 +67,6 @@ export default function RegisterPage() {
                     disabled={disableForm}
                     data-test="user-name-input"
                 />
-
                 <input
                     id="image"
                     type="url" 
@@ -80,7 +78,6 @@ export default function RegisterPage() {
                     disabled={disableForm}
                     data-test="user-image-input"
                 />
-
                 <button type='submit' disabled={disableForm} data-test="signup-btn">
                     {(disableForm) ? <Loading/> : "Cadastrar"}
                 </button>
@@ -89,32 +86,3 @@ export default function RegisterPage() {
         </DadosUsuario>
     )
 }
-
-const DadosUsuario = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 70px 36px;
-    font-family: 'Lexend Deca';
-    button{
-        display: flex;
-		align-items: center;
-        justify-content: center;
-    }
-    img{
-        width: 180px;
-        height: 180px;
-        margin-bottom: 35px ;
-    }
-    form{
-        display: flex;
-        flex-direction: column;
-    }
-    a{
-        margin-top: 25px;
-        font-weight: 400;
-        font-size: 14px;
-        text-decoration-line: underline;
-        color: #52B6FF; //Tema cor clara
-    }
-`

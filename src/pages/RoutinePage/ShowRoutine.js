@@ -6,6 +6,7 @@ import { FaRegTrashAlt } from 'react-icons/fa';
 import { BASE_URL } from '../../constants/url'
 import { GlobalContext } from '../../context/GlobalContext';
 import axios from 'axios';
+import { TEXT_GREY } from '../../constants/colors';
 
 export default function ShowRoutine({ routine, getData }) {
     const { user } = useContext(GlobalContext);
@@ -69,6 +70,7 @@ const Delete = styled.span`
     position: absolute;
     top: 10px;
     right: 10px;
+    color: ${TEXT_GREY};
 `
 const Div = styled.div`
     height: 91px;
@@ -81,7 +83,7 @@ const Div = styled.div`
     padding-left: 15px;
     position: relative;
     h1{
-        color: #666666;
+        color: ${TEXT_GREY};
         font-size: 20px;
         padding-bottom: 10px;
     }

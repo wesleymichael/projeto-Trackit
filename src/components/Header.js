@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react'
 import styled from 'styled-components'
 import { GlobalContext } from '../context/GlobalContext'
+import { TEMA_ESCURO } from '../constants/colors';
 
 export default function Header() {
     const {user, setUser} = useContext(GlobalContext);
@@ -24,7 +25,7 @@ const HeaderStyled = styled.header`
     position: fixed;
     top: 0;
     z-index: 2;
-    background: #126BA5; //Cor tema mais escuro
+    background: ${TEMA_ESCURO};
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.15);
     padding: 0 10px;
     display: flex;
@@ -32,7 +33,6 @@ const HeaderStyled = styled.header`
     justify-content: space-between;
     div{
         font-family: 'Playball';
-        font-weight: 400;
         font-size: 38px;
         color: #FFFFFF;
     }

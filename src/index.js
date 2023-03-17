@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom/client';
 import App from './App';
 import GlobalStyle from "./style/GlobalStyle"
 import ResetStyle from './style/ResetStyle'
-
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import HistoryPage from './pages/HistoryPage/HistoryPage'
 import LoginPage from './pages/LoginPage/LoginPage'
@@ -12,7 +11,6 @@ import RoutinePage from './pages/RoutinePage/RoutinePage'
 import TodayPage from './pages/TodayPage/TodayPage'
 import { GlobalContextProvider } from './context/GlobalContext';
 
-//Confiuguração de rotas e prover para a aplicação
 const router = createBrowserRouter([
   {
     path: "/",

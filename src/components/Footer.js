@@ -1,9 +1,10 @@
-import React, { useContext } from 'react'
-import styled from 'styled-components'
+import React, { useContext } from 'react';
+import styled from 'styled-components';
 import {CircularProgressbar, buildStyles} from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { Link } from 'react-router-dom';
 import { GlobalContext } from '../context/GlobalContext';
+import { TEMA_CLARO } from '../constants/colors';
 
 export default function Footer() {
     const {progress} = useContext(GlobalContext)
@@ -27,7 +28,7 @@ function ProgressBar({progress}){
                 background
                 backgroundPadding={6}
                 styles={buildStyles({
-                    backgroundColor: "#52B6FF",
+                    backgroundColor: TEMA_CLARO,
                     textColor: "#fff",
                     pathColor: "#fff",
                     trailColor: "transparent",
@@ -43,22 +44,20 @@ const DivProgressBar = styled.div`
     position: relative;
     bottom: 20px;
 `
-
 const FooterStyled = styled.footer`
     width: 100%;
     height: 70px;
     position: fixed;
-    bottom: 0px;
+    bottom: 0;
     z-index: 2;
     background: #FFFFFF;
     padding: 0 28px;
+    font-size: 22px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     a{
-        color: #52B6FF; //Cor tema claro
+        color: ${TEMA_CLARO};
+        font-family: 'Lexend Deca';
     }
-    font-family: 'Lexend Deca';
-    font-weight: 400;
-    font-size: 22px;
 `

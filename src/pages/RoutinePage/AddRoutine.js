@@ -4,7 +4,6 @@ import weekdays from '../../constants/weekdays'
 import {BASE_URL} from '../../constants/url'
 import Loading from '../../components/Loading';
 import {ButtonWeekday} from './Styled'
-
 import { GlobalContext } from '../../context/GlobalContext';
 import axios from 'axios';
 
@@ -81,7 +80,7 @@ const Div = styled.div`
     border-radius: 5px;
     display: flex;
     flex-direction: column;
-    margin: 25px 0; 
+    margin: 10px 0 20px 0; 
     padding: 18px;
     position: relative;
     div:last-child{
@@ -95,15 +94,13 @@ const Div = styled.div`
             height: 35px;
             font-size: 16px;
         }
-        div{
-            padding: 0;
+        /* div{
             position: relative;
             bottom: 10px;
             left: 10px;
-        }
+        } */
     }
 `
-
 const ButtonCancelar = styled.button`
     color: #52B6FF;
     margin-right: 20px;

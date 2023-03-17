@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import Footer from '../../components/Footer'
 import Header from '../../components/Header'
+import { BACKGROUND_GREY, TEMA_ESCURO, TEXT_GREY } from '../../constants/colors'
 
 export default function HistoryPage() {
     return (
@@ -17,20 +18,18 @@ export default function HistoryPage() {
 }
 
 const HistoryStyled = styled.div`
-    font-family: 'Lexend Deca';
-    font-weight: 400;
     position: relative;
     top: 70px;
     height: calc(100vh - 70px);
-    background: #F2F2F2;
+    background: ${BACKGROUND_GREY};
     padding: 20px 17px;
     h1{
         font-size: 22px;
-        color: #126BA5;
+        color: ${TEMA_ESCURO};
         padding-bottom: 17px;
     }
     p{
         font-size: 18px;
-        color: #666666;
+        color: ${TEXT_GREY};
     }
 `

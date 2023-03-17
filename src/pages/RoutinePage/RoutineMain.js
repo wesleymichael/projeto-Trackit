@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useState } from 'react'
 import styled from 'styled-components'
 import AddRoutine from './AddRoutine'
 import { BASE_URL } from '../../constants/url'
-
 import { GlobalContext } from '../../context/GlobalContext';
 import axios from 'axios';
 import ShowRoutine from './ShowRoutine';
+import { BACKGROUND_GREY, TEMA_ESCURO, TEXT_GREY } from '../../constants/colors';
 
 export default function RoutineMain() {
     const [showAddRoutine, setShowAddRoutine] = useState(false);
@@ -47,7 +47,6 @@ export default function RoutineMain() {
                     getData={getData}
                 /> : ""
             }
-
             <div>
                 {(routine.length === 0) ?
                     <p>
@@ -67,12 +66,11 @@ export default function RoutineMain() {
 
 const Div = styled.div`
     font-family: 'Lexend Deca';
-    font-weight: 400;
     position: relative;
     top: 70px;
     height: 100%;
     min-height: calc(100vh - 70px);
-    background: #F2F2F2;
+    background: ${BACKGROUND_GREY};
     padding: 0px 17px;
     padding-bottom: 90px;
     >div:first-child{
@@ -90,12 +88,12 @@ const Div = styled.div`
         }
         h1{
             font-size: 22px;
-            color: #126BA5;
+            color: ${TEMA_ESCURO};
         }
     }
     p{
         font-size: 19px;
-        color: #666666;
+        color: ${TEXT_GREY};
         padding-top: 20px;
     }
 `

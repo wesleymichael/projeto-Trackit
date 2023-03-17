@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import logo from '../../assets/logo.png'
 import Loading from '../../components/Loading';
 import {BASE_URL} from "../../constants/url";
+import { DadosUsuario } from '../../style/StyledPages';
 
 import { GlobalContext } from '../../context/GlobalContext';
 
@@ -37,7 +38,7 @@ export default function LoginPage() {
                 localStorage.setItem('user', JSON.stringify(res.data));
             })
             .catch(err => {
-                (err.response.status === 404) ? alert(err) : alert(err.response.data);
+                alert(err.response.data.message);
                 setDisableForm(false);
             })
     }
@@ -76,32 +77,3 @@ export default function LoginPage() {
         </DadosUsuario>
     )
 }
-
-const DadosUsuario = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 70px 36px;
-    font-family: 'Lexend Deca';
-    button{
-        display: flex;
-		align-items: center;
-        justify-content: center;
-    }
-    img{
-        width: 180px;
-        height: 180px;
-        margin-bottom: 35px ;
-    }
-    form{
-        display: flex;
-        flex-direction: column;
-    }
-    a{
-        margin-top: 25px;
-        font-weight: 400;
-        font-size: 14px;
-        text-decoration-line: underline;
-        color: #52B6FF; //Tema cor clara
-    }
-`

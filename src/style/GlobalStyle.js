@@ -4,6 +4,10 @@ const GlobalStyle = createGlobalStyle`
     *{
         box-sizing: border-box;
     }
+    body{
+        font-family: 'Lexend Deca';
+        font-weight: 400;
+    }
     button{
         height: 45px;
         border: none;
@@ -13,9 +17,6 @@ const GlobalStyle = createGlobalStyle`
         font-weight: 400;
         font-size: 20px;
         color: #FFFFFF;
-        /* display: flex;
-		align-items: center;
-        justify-content: center; */
         cursor: pointer;
         -webkit-tap-highlight-color: transparent;
     }

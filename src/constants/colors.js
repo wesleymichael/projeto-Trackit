@@ -1,0 +1,6 @@
+export const TEMA_ESCURO = "#126BA5"
+export const TEMA_CLARO = "#52B6FF"
+export const CHECK = "#8FC549"
+export const UNCHECK = "#EBEBEB"
+export const BACKGROUND_GREY = "#F2F2F2"
+export const TEXT_GREY = "#666666"
