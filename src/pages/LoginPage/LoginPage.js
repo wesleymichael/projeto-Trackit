@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import logo from '../../assets/logo.png'
@@ -17,6 +17,14 @@ export default function LoginPage() {
     function handleForm(e){
         setForm( {...form, [e.target.name]: e.target.value} )
     }
+
+    useEffect(() => {
+        const user_Storage = JSON.parse(localStorage.getItem('user'));
+        if(user_Storage){
+            setUser(user_Storage);
+            navigate('/hoje');
+        }
+    },[]);
 
     function login(e){
         e.preventDefault();

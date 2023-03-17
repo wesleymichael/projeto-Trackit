@@ -33,14 +33,18 @@ export default function TodayPageMain() {
     }
 
     function updateProgress(habits){
-        const total = habits.length;
+        const total = habits.length;    
         let feitos = 0;
-        for(let i in habits){
-            if(habits[i].done === true){
-                feitos += 1;
+        if(total !== 0){
+            for(let i in habits){
+                if(habits[i].done === true){
+                    feitos += 1;
+                }
             }
+            setProgress((100*feitos/total).toFixed(1))
+        } else {
+            setProgress(0)
         }
-        setProgress((100*feitos/total).toFixed(1))
     }
 
     function weekdayToday(day) {
@@ -74,7 +78,7 @@ export default function TodayPageMain() {
             
             { habitsToday.map( h => (
                 //<Task key={h.id} id={h.id} name={h.name} done={h.done} currentSequence={h.currentSequence} highestSequence={h.highestSequence} />
-                <TodayTask data-test="today-habit-container">
+                <TodayTask key={h.id} data-test="today-habit-container">
                     <div>
                         <h2 data-test="today-habit-name">{h.name}</h2>
                         <div>

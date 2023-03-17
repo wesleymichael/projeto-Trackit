@@ -9,7 +9,7 @@ import axios from 'axios';
 
 export default function ShowRoutine({ routine, getData }) {
     const { user } = useContext(GlobalContext);
-    const [confirmDeleteVisible, setConfirmDeleteVisible] = useState(false)
+    //const [confirmDeleteVisible, setConfirmDeleteVisible] = useState(false)
 
     function deleteRoutine(id) {
         if( window.confirm("Deletar hábito?") ){
@@ -19,7 +19,7 @@ export default function ShowRoutine({ routine, getData }) {
             axios.delete(`${BASE_URL}/habits/${id}`, config)
                 .then(res => {
                     alert("Hábito deletado");
-                    setConfirmDeleteVisible(false);
+                    //setConfirmDeleteVisible(false);
                     getData();
                 })
         }
@@ -31,9 +31,9 @@ export default function ShowRoutine({ routine, getData }) {
                 <Div key={r.name} data-test="habit-container">
                     <h1 data-test="habit-name">{r.name}</h1>
                     <Weekdays weekdays={weekdays} days={r.days} />
-                    <Delete onClick={() => setConfirmDeleteVisible(true)} data-test="habit-delete-btn"><FaRegTrashAlt /></Delete>
+                    <Delete onClick={() => deleteRoutine(r.id)} data-test="habit-delete-btn"><FaRegTrashAlt /></Delete>
 
-                    {(confirmDeleteVisible) &&
+                    {/* {(confirmDeleteVisible) &&
                         <ConfirmDeleteStyled>
                             <div>
                                 <p>Deletar item?</p>
@@ -43,13 +43,14 @@ export default function ShowRoutine({ routine, getData }) {
                                 </div>
                             </div>
                         </ConfirmDeleteStyled>
-                    }
+                    } */}
                 </Div>
             ))}
 
         </>
     )
 }
+
 function Weekdays({ weekdays, days }) {
     return (
         <span>
@@ -61,49 +62,7 @@ function Weekdays({ weekdays, days }) {
         </span>
     )
 }
-const ConfirmDeleteStyled = styled.div`
-    position: fixed;
-    top: 0;
-    right: 0;
-    z-index: 3;
-    height: 100vh;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.15);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    >div{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        background: rgba(49, 46, 46, 0.7);
-        height: 90px;
-        width: 200px;
-        border-radius: 10px;
-        padding: 0;
-    }
-    p{
-        padding: 10px !important;
-        color: #FFFFFF !important;
-        width: 100%;
-        text-align: center;
-        border-bottom: 1px solid rgb(161, 161, 161);
-    }
-    button{
-        position: relative;
-        bottom: 0;
-        height: 30px;
-        width: 100px;
-        font-size: 15px;
-        padding-top: 10px;
-        background: none;
-        &:focus{
-            outline: none;
-            box-shadow: none !important;
-        }
-    }
-`
+
 const Delete = styled.span`
     width: 15px;
     height: 13px;
@@ -127,3 +86,47 @@ const Div = styled.div`
         padding-bottom: 10px;
     }
 `
+
+// const ConfirmDeleteStyled = styled.div`
+//     position: fixed;
+//     top: 0;
+//     right: 0;
+//     z-index: 3;
+//     height: 100vh;
+//     width: 100%;
+//     background: rgba(255, 255, 255, 0.15);
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     >div{
+//         display: flex;
+//         flex-direction: column;
+//         align-items: center;
+//         justify-content: center;
+//         background: rgba(49, 46, 46, 0.7);
+//         height: 90px;
+//         width: 200px;
+//         border-radius: 10px;
+//         padding: 0;
+//     }
+//     p{
+//         padding: 10px !important;
+//         color: #FFFFFF !important;
+//         width: 100%;
+//         text-align: center;
+//         border-bottom: 1px solid rgb(161, 161, 161);
+//     }
+//     button{
+//         position: relative;
+//         bottom: 0;
+//         height: 30px;
+//         width: 100px;
+//         font-size: 15px;
+//         padding-top: 10px;
+//         background: none;
+//         &:focus{
+//             outline: none;
+//             box-shadow: none !important;
+//         }
+//     }
+// `
