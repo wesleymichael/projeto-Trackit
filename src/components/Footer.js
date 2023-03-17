@@ -27,9 +27,11 @@ function ProgressBar({progress}){
                 text="Hoje"
                 background
                 backgroundPadding={6}
+
                 styles={buildStyles({
                     backgroundColor: TEMA_CLARO,
                     textColor: "#fff",
+                    textSize: '22px',
                     pathColor: "#fff",
                     trailColor: "transparent",
                 })}

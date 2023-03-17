@@ -1,5 +1,4 @@
 import React, { useContext, useEffect, useState } from 'react'
-import styled from 'styled-components'
 import { FaCheck } from 'react-icons/fa';
 import { BASE_URL } from '../../constants/url';
 import { GlobalContext } from '../../context/GlobalContext';

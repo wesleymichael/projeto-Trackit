@@ -27,7 +27,7 @@ export const Check = styled.button`
     width: 70px;
     height: 70px;
     bottom: 12px;
-    font-size: 30px;
+    font-size: 30px !important;
     display: flex;
     align-items: center;
     justify-content: center;

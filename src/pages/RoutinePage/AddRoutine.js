@@ -94,11 +94,6 @@ const Div = styled.div`
             height: 35px;
             font-size: 16px;
         }
-        /* div{
-            position: relative;
-            bottom: 10px;
-            left: 10px;
-        } */
     }
 `
 const ButtonCancelar = styled.button`

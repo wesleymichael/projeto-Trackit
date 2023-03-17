@@ -23,6 +23,7 @@ const HistoryStyled = styled.div`
     height: calc(100vh - 70px);
     background: ${BACKGROUND_GREY};
     padding: 20px 17px;
+    font-family: 'Lexend Deca';
     h1{
         font-size: 22px;
         color: ${TEMA_ESCURO};
